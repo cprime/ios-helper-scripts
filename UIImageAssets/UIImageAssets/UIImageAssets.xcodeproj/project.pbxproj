@@ -7,7 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		80E0024E1ABDB561002D0B62 /* ImageFileFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E0024D1ABDB561002D0B62 /* ImageFileFormatter.swift */; };
+		80E0024E1ABDB561002D0B62 /* ImageFileWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E0024D1ABDB561002D0B62 /* ImageFileWriter.swift */; };
+		80E002501ABDE319002D0B62 /* ImageScraper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E0024F1ABDE319002D0B62 /* ImageScraper.swift */; };
+		80E002521ABDE9D5002D0B62 /* String+Substring.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E002511ABDE9D5002D0B62 /* String+Substring.swift */; };
+		80E002541ABDEA06002D0B62 /* NSData+Json.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E002531ABDEA06002D0B62 /* NSData+Json.swift */; };
+		80E002561ABDEB78002D0B62 /* String+CamelCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E002551ABDEB78002D0B62 /* String+CamelCase.swift */; };
 		E6CF54CD1ABCBD94001386A9 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CF54CC1ABCBD94001386A9 /* main.swift */; };
 		E6CF54E91ABCC4F0001386A9 /* UIImageAssetsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CF54E81ABCC4F0001386A9 /* UIImageAssetsTests.swift */; };
 /* End PBXBuildFile section */
@@ -25,7 +29,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		80E0024D1ABDB561002D0B62 /* ImageFileFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageFileFormatter.swift; sourceTree = "<group>"; };
+		80E0024D1ABDB561002D0B62 /* ImageFileWriter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageFileWriter.swift; sourceTree = "<group>"; };
+		80E0024F1ABDE319002D0B62 /* ImageScraper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageScraper.swift; sourceTree = "<group>"; };
+		80E002511ABDE9D5002D0B62 /* String+Substring.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Substring.swift"; sourceTree = "<group>"; };
+		80E002531ABDEA06002D0B62 /* NSData+Json.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSData+Json.swift"; sourceTree = "<group>"; };
+		80E002551ABDEB78002D0B62 /* String+CamelCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+CamelCase.swift"; sourceTree = "<group>"; };
 		E6CF54C91ABCBD94001386A9 /* UIImageAssets */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = UIImageAssets; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6CF54CC1ABCBD94001386A9 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		E6CF54E41ABCC4F0001386A9 /* UIImageAssetsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UIImageAssetsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -73,7 +81,11 @@
 			isa = PBXGroup;
 			children = (
 				E6CF54CC1ABCBD94001386A9 /* main.swift */,
-				80E0024D1ABDB561002D0B62 /* ImageFileFormatter.swift */,
+				80E0024F1ABDE319002D0B62 /* ImageScraper.swift */,
+				80E0024D1ABDB561002D0B62 /* ImageFileWriter.swift */,
+				80E002531ABDEA06002D0B62 /* NSData+Json.swift */,
+				80E002511ABDE9D5002D0B62 /* String+Substring.swift */,
+				80E002551ABDEB78002D0B62 /* String+CamelCase.swift */,
 			);
 			path = UIImageAssets;
 			sourceTree = "<group>";
@@ -182,8 +194,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				80E0024E1ABDB561002D0B62 /* ImageFileFormatter.swift in Sources */,
+				80E002521ABDE9D5002D0B62 /* String+Substring.swift in Sources */,
+				80E002541ABDEA06002D0B62 /* NSData+Json.swift in Sources */,
+				80E002501ABDE319002D0B62 /* ImageScraper.swift in Sources */,
+				80E0024E1ABDB561002D0B62 /* ImageFileWriter.swift in Sources */,
 				E6CF54CD1ABCBD94001386A9 /* main.swift in Sources */,
+				80E002561ABDEB78002D0B62 /* String+CamelCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,6 +292,7 @@
 		E6CF54D11ABCBD94001386A9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -283,6 +300,7 @@
 		E6CF54D21ABCBD94001386A9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
