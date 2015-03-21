@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		80E0024E1ABDB561002D0B62 /* ImageFileFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E0024D1ABDB561002D0B62 /* ImageFileFormatter.swift */; };
 		E6CF54CD1ABCBD94001386A9 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CF54CC1ABCBD94001386A9 /* main.swift */; };
 		E6CF54E91ABCC4F0001386A9 /* UIImageAssetsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CF54E81ABCC4F0001386A9 /* UIImageAssetsTests.swift */; };
 /* End PBXBuildFile section */
@@ -24,6 +25,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		80E0024D1ABDB561002D0B62 /* ImageFileFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageFileFormatter.swift; sourceTree = "<group>"; };
 		E6CF54C91ABCBD94001386A9 /* UIImageAssets */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = UIImageAssets; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6CF54CC1ABCBD94001386A9 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		E6CF54E41ABCC4F0001386A9 /* UIImageAssetsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UIImageAssetsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -71,6 +73,7 @@
 			isa = PBXGroup;
 			children = (
 				E6CF54CC1ABCBD94001386A9 /* main.swift */,
+				80E0024D1ABDB561002D0B62 /* ImageFileFormatter.swift */,
 			);
 			path = UIImageAssets;
 			sourceTree = "<group>";
@@ -179,6 +182,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				80E0024E1ABDB561002D0B62 /* ImageFileFormatter.swift in Sources */,
 				E6CF54CD1ABCBD94001386A9 /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -343,6 +347,7 @@
 				E6CF54EB1ABCC4F0001386A9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

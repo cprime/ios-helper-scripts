@@ -25,12 +25,13 @@ let fileManager = NSFileManager.defaultManager()
 let currentDirectory = fileManager.currentDirectoryPath
 
 /*
-This is a list of directories to ignore when recursively collecting all files 
+This is a list of directories to ignore when recursively collecting all files
 I'm not sure if we can put other things in this list, but .git is a big folder and there will never be an xcassets folder within it.
 */
 
 let ignoredDirectories = [".git"]
 let xcassetsSuffix = ".xcassets"
+let imageSetSuffix = ".imageset"
 let imageJsonName = "Contents.json"
 func allImageJsonFilesAtPath(path: String) -> [String] {
     var err: NSError? = nil
@@ -47,7 +48,7 @@ func allImageJsonFilesAtPath(path: String) -> [String] {
                 }
                 
                 let fullContentPath = path + "/" + contentPath
-                if fullContentPath.contains(xcassetsSuffix) && fullContentPath.hasSuffix(imageJsonName) {
+                if fullContentPath.contains(imageSetSuffix) && fullContentPath.hasSuffix(imageJsonName) {
                     allPaths += [fullContentPath]
                 }
                 allPaths += allImageJsonFilesAtPath(fullContentPath)
@@ -79,5 +80,18 @@ func imageJsonPathsToDictionaries(imageJsonPaths: [String]) -> ImageJsonDictiona
 let imageJsonFilePaths = allImageJsonFilesAtPath(currentDirectory)
 let imageDictionaries = imageJsonPathsToDictionaries(imageJsonFilePaths)
 
-println("Got image dictionaries: \(imageDictionaries)")
+var imageNames: [String] = []
+for imageSetDict in imageDictionaries {
+    if let imagesArray = imageSetDict["images"] as? [AnyObject] {
+        if let first = imagesArray.first as? [String : String]{
+            if let imageName = first["filename"] {
+                imageNames.append(imageName)
+            }
+        }
+    }
+}
+
+let header = ImageFileFormatter.generateUIImageCategoryWithName("Test", directoryPath: currentDirectory, imageNames: imageNames)
+println("header: \(header)")
+
 
