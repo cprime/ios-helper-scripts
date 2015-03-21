@@ -8,5 +8,76 @@
 
 import Foundation
 
-println("Hello, World!")
+extension String {
+    /**
+    Used to check if a String contains a given substring
+    
+    :param: find the substring to search for
+    
+    :returns: whether or not the substring exists
+    */
+    func contains(find: String) -> Bool {
+        return self.rangeOfString(find) != nil
+    }
+}
+
+let fileManager = NSFileManager.defaultManager()
+let currentDirectory = fileManager.currentDirectoryPath
+
+/*
+This is a list of directories to ignore when recursively collecting all files 
+I'm not sure if we can put other things in this list, but .git is a big folder and there will never be an xcassets folder within it.
+*/
+
+let ignoredDirectories = [".git"]
+let xcassetsSuffix = ".xcassets"
+let imageJsonName = "Contents.json"
+func allImageJsonFilesAtPath(path: String) -> [String] {
+    var err: NSError? = nil
+    var allPaths: [String] = []
+    if let contents = fileManager.contentsOfDirectoryAtPath(path, error: &err) as? [String] {
+        if let error = err {
+            println("ERROR: \(error)")
+        }
+        
+        if !contents.isEmpty {
+            for contentPath in contents {
+                if contains(ignoredDirectories, contentPath) {
+                    continue
+                }
+                
+                let fullContentPath = path + "/" + contentPath
+                if fullContentPath.contains(xcassetsSuffix) && fullContentPath.hasSuffix(imageJsonName) {
+                    allPaths += [fullContentPath]
+                }
+                allPaths += allImageJsonFilesAtPath(fullContentPath)
+            }
+        }
+    }
+    
+    return  allPaths
+}
+
+typealias ImageJsonDictionary = [String : AnyObject]
+typealias ImageJsonDictionariesArray = [ImageJsonDictionary]
+
+func imageJsonPathsToDictionaries(imageJsonPaths: [String]) -> ImageJsonDictionariesArray {
+    var imageDictionaries: ImageJsonDictionariesArray = []
+    for path in imageJsonPaths {
+        if let data = NSData(contentsOfFile: path) {
+            var err: NSError? = nil
+            if let json = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: &err) as? ImageJsonDictionary {
+                imageDictionaries += [json]
+            } else if let error = err {
+                println("ERROR: \(error) \n\n For Path: \(path)")
+            }
+        }
+    }
+    return imageDictionaries
+}
+
+let imageJsonFilePaths = allImageJsonFilesAtPath(currentDirectory)
+let imageDictionaries = imageJsonPathsToDictionaries(imageJsonFilePaths)
+
+println("Got image dictionaries: \(imageDictionaries)")
 
